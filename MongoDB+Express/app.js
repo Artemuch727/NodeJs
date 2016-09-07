@@ -39,7 +39,11 @@ app.use(function(err, req, res, next) {
   var errMessage = ''
     if (err == 401){
       errMessage = 'Ошибка! Вы не авторизованы.'
+    };
+    if (err == 403){
+      errMessage = 'Ошибка! Данная операция невозможна.'
     }
+
         res.render('error', {
           message: errMessage
         });

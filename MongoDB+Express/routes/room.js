@@ -9,9 +9,9 @@ exports.get = function(req, res) {
 exports.post = function(req, res, next) {
 	var party_title = req.body.party_title;
 	var party_description = req.body.party_description;
+	var author = req.body.party_author;
 
-
-		Party.add(party_title, party_description, function(err, party) {
+		Party.add(party_title, party_description, author, function(err, party) {
 		if(err) return next(err);	
 		res.send({});
 	});

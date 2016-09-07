@@ -81,8 +81,17 @@ a {
     align-items: center;
     justify-content: space-between;
 }
+
+.party__detail {
+    padding: 15px;
+    margin: 10px;
+    -webkit-box-shadow: 4px 4px 19px -1px rgba(0,0,0,0.48);
+    -moz-box-shadow: 4px 4px 19px -1px rgba(0,0,0,0.48);
+    box-shadow: 4px 4px 19px -1px rgba(0,0,0,0.48);
+}
+
 .party-title{
-	font-size: 16px;
+	font-size: 24px;
 	font-weight: bold;	
 }
 .party__detail {

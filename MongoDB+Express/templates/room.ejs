@@ -6,6 +6,7 @@
 
 <div class='loginBox'>
         		<form name="party-form" class="login-form">
+        		<input type="hidden" name="party_author" value=<%=user.get('username')%> />
 				  <div class="container">
 				    <label><b>Название мероприятия</b></label>
 				    <input class="login-form__input" type="text" placeholder="Название мероприятия" name="party_title" id="input-title"/> 

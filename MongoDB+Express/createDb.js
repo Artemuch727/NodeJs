@@ -37,11 +37,11 @@ function createUsers(callback) {
 function createParty(callback) {
 	
 	var party = [
-					{title: 'Кино', description: 'Идем смотреть кино в кинотеатр "CinemaPark" в ТЦ "Космос"'},
-					{title: 'Боулинг', description: 'Идем играть в боулинг в ТЦ "Москва"'},
-					{title: 'Караоке', description: 'Идем петь и танцевать в Караоке "4 Комнаты"'},
-					{title: 'Прогулка', description: 'Идем гулять по вечернему Ставрополю'},
-					{title: 'Рафтинг', description: 'Едем сплавляться на лодках по горным рекам Домбая'}
+					{author:'Петр',title: 'Кино', description: 'Идем смотреть кино в кинотеатр "CinemaPark" в ТЦ "Космос"'},
+					{author:'Петр',title: 'Боулинг', description: 'Идем играть в боулинг в ТЦ "Москва"'},
+					{author:'Иван',title: 'Караоке', description: 'Идем петь и танцевать в Караоке "4 Комнаты"'},
+					{author:'Иван',title: 'Прогулка', description: 'Идем гулять по вечернему Ставрополю'},
+					{author:'Вася',title: 'Рафтинг', description: 'Едем сплавляться на лодках по горным рекам Домбая'}
 				];
 
 	async.each(party, function(partyData, callback){

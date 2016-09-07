@@ -9,6 +9,10 @@ var schema = new Schema({
 		type: String,
 		required: true
 	},
+	author: {
+		type: String,
+		required: true
+	},
 	description: {
 		type: String,
 		required: true
@@ -22,10 +26,20 @@ var schema = new Schema({
 	}
 });
 
-schema.statics.add = function(title, description, callback) {
+schema.statics.add = function(title, description, author, callback) {
 		var Party = this;
-		var party = new Party({title: title, description: description});
+		var party = new Party({title: title, description: description, author: author});
 			party.save(function(err) {
+				if (err) return next(err)
+				callback(null, party);
+			})
+}
+
+schema.statics.remove = function(title,username,  callback) {
+			var Party = this;
+			console.log(title)		 ;
+			//Party.findOneAndRemove({ title: title });
+			Party.findOneAndRemove({ title: title, author: username }, function(err, party) {
 				if (err) return next(err)
 				callback(null, party);
 			})

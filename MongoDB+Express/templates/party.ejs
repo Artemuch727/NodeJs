@@ -4,8 +4,11 @@
  
   <form name="party-accepting" class="party-accepting">
   <div class="party__detail">
-	  <h3 class="party-title"><%= party.title %></h3>	  
-	  <div class="party-body">
+	  <h1 class="party-title"><%= party.title %></h1>	  
+
+	  <h3 class="party-author">Инициатор: <%= party.author %></h3>	
+
+	  <div class="party-body"> Описание:
 	    <%- party.description %>
 		<p class="partybox__user">Кто идет: <%- party.guests %></p>
   		</div>
@@ -19,10 +22,39 @@
 			> Я иду! </input>			 
 			<button style="margin: auto;" type="submit" name="submit"> Подтвердить </button>
 			</div>
+			<% if (party.author == user.get('username')) { %>
+				<form name="party-deleting">
+					<input type="hidden" name="party_title_del" value=<%= party.title %> />
+					<button type="submit" style="margin: 10px; width:250px; height: 40px;" data-loading-text="Sending...">	Удалить мероприятие </button>  
+			    </form>
+			 <% } %>
 	</div>
   </form>
 
 <script type="text/javascript">
+		$(document.forms['party-deleting']).on('submit', function() {
+			var form = $(this);
+	  	$('.error', form).html('');	  	 
+	  	$.ajax({
+	  		url: "/party",
+	  		method: "post",
+	  		data: form.serialize(),
+	  		complete: function() {
+	  		},
+	  		statusCode: {
+	  			200: function() {
+	  				form.html("Мероприятие удалено.");
+	  				window.location.href = "/room";
+	  			},
+	  			403: function() {
+	  				console.log("Ошибка! Данная операция невозможна.");
+	  				window.location.href = "/room";
+	  			}
+	  		}
+	  	});
+	  	return false
+		})
+
 	  
 	  $(document.forms['party-accepting']).on('submit', function() {
 	  	var form = $(this);

@@ -6,12 +6,16 @@ exports.get = function(req, res) {
 	Party.findOne({title: req.params.title}, function(err, party) {
 		if(err) return next(err);
 		res.render('party', {party: party});
-	});
-    
-    
+	});    
 };
 
 exports.post = function(req, res, next) {
+	if (req.body.party_title_del) {
+		Party.remove(req.body.party_title_del, req.user.username , function(err, party) {
+		if(err) return next(err);
+		res.send({});
+	});
+	} else {
 	var actionType = '';
 	if (req.body.accepted) 
 			{actionType = 'ADD'}
@@ -19,7 +23,7 @@ exports.post = function(req, res, next) {
 	Party.guestActions(req.body.party_title, req.user.username,actionType, function(err) {
 		if(err) return next(err);
 		res.send({});
-	});
-
+		});
+	};
 };
 
