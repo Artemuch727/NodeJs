@@ -1,0 +1,44 @@
+<% layout('./layout/page')%>
+<% block('title', 'Login page')%>
+<p style="text-align:center;"> Введите свои учетные данные. Если указанного пользователя не существует, он будет зарегистрирован автоматически </p>
+<div class="loginBox">
+	<form name="login-form" class="login-form">
+	  <div class="container">
+	    <label><b>Имя пользователя</b></label>
+	    <input class="login-form__input" type="text" placeholder="Введите имя пользователя" name="username" id="input-username"/> 
+	    <label><b>Пароль</b></label>
+	    <input class="login-form__input" type="password" placeholder="Введите пароль" name="password" id="input-password"/>  
+	    		     
+	  </div>
+	  <div class="footer">
+	  	<button type="submit" class="footer__btn_submit">Войти</button>		
+	    <button type="button" class="footer__btn_cancel" data-loading-text="Sending..."
+	    	onClick="$('<form method=POST action=/logout>').submit();return false">	Отмена </button>   
+	  </div>
+	</form>
+</div>
+
+<script type="text/javascript">
+	  $(document.forms['login-form']).on('submit', function() {
+	  	var form = $(this);
+	  	$('.error', form).html('');
+	  	$.ajax({
+	  		url: "/login",
+	  		method: "post",
+	  		data: form.serialize(),
+	  		complete: function() {
+	  		},
+	  		statusCode: {
+	  			200: function() {
+	  				form.html("Успешная авторизация");
+	  				window.location.href = "/room";
+	  			},
+	  			403: function() {
+	  				var error = JSON.parse(jqXHR.responseText);
+	  				$('.error', form).html(error.message)
+	  			}
+	  		}
+	  	});
+	  	return false
+	  });
+</script>

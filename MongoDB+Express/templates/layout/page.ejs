@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= blocks.title %></title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<script src='/js/jquery-3.1.0.min.js'></script>		
+	</head>
+
+	<body>
+		<header>
+			<%-block.header%>
+		</header>
+		<section class="container">
+		<%-partial('../partials/topNavigation') %>		
+			<%-body%>
+		</section>
+		<footer>
+		<%-blocks.footer%>
+		</footer>
+
+	
+
+	</body>
+</html>

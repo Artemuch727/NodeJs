@@ -1,0 +1,179 @@
+body {
+  padding: 50px;
+  font: 14px "RobotoMedium";
+}
+
+a {
+  color: #00B7FF;
+}
+.navbar {
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ececec;
+
+    	-webkit-box-shadow: 4px 4px 19px -1px rgba(0,0,0,0.48);
+	-moz-box-shadow: 4px 4px 19px -1px rgba(0,0,0,0.48);
+	box-shadow: 4px 4px 19px -1px rgba(0,0,0,0.48);
+}
+
+.navbar-nav{
+	width: 33%;
+	display: flex;
+    justify-content: space-between;
+	list-style: none;
+	padding: 15px;
+	margin: 10px;
+	background-color: #ececec;
+}
+.navbar-right{
+	list-style: none;
+	padding: 15px;
+	margin: 10px;
+	background-color: #ececec;
+}
+
+.navbar-nav_link {
+	padding: 15px;
+    margin: 3px;
+
+    width: 150px;
+    text-align: center;
+    font: 16px "RobotoBold";
+    	-webkit-box-shadow: 4px 4px 19px -1px rgba(0,0,0,0.48);
+	-moz-box-shadow: 4px 4px 19px -1px rgba(0,0,0,0.48);
+	box-shadow: 4px 4px 19px -1px rgba(0,0,0,0.48);
+}
+
+.parties {
+	flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 15px 55px;
+}
+
+.partybox {
+	width: 250px;
+    height: 100px;
+    padding: 10px;
+    background-color: #ececec;
+    margin: 10px 5px;
+    float: left;
+    	-webkit-box-shadow: 4px 4px 19px -1px rgba(0,0,0,0.48);
+	-moz-box-shadow: 4px 4px 19px -1px rgba(0,0,0,0.48);
+	box-shadow: 4px 4px 19px -1px rgba(0,0,0,0.48);
+}
+
+.partybox__user {
+	font-size: 12px;
+    font-style: italic;
+}
+
+.partybox__title {
+	font-size: 16px;
+	font-weight: bold;	
+}
+
+.party-accepting {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.party-title{
+	font-size: 16px;
+	font-weight: bold;	
+}
+.party__detail {
+	width: 80%;
+}
+.party__footer {
+	text-align: center;
+	padding: 15px;
+	width: 25%;
+	-webkit-box-shadow: 4px 4px 19px -1px rgba(0,0,0,0.48);
+	-moz-box-shadow: 4px 4px 19px -1px rgba(0,0,0,0.48);
+	box-shadow: 4px 4px 19px -1px rgba(0,0,0,0.48);
+}
+.party__footer_btns {
+	text-align: center;
+	}
+
+
+
+
+.loginBox {
+	-webkit-box-shadow: 4px 4px 19px -1px rgba(0,0,0,0.48);
+	-moz-box-shadow: 4px 4px 19px -1px rgba(0,0,0,0.48);
+	box-shadow: 4px 4px 19px -1px rgba(0,0,0,0.48);
+}
+.login-form {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-form__input {
+	padding: 5px;
+    margin: 10px 10px;
+	}
+
+.footer {
+	width: 15%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	}	
+.footer__btn_submit{
+		width: 45%;
+		height: 35px;
+}
+	
+.footer__btn_cancel{
+		width: 45%;
+		height: 35px;
+}
+
+
+
+
+/* font-family: "RobotoRegular"; */
+@font-face {
+    font-family: "RobotoRegular";
+    src: url("../fonts/RobotoRegular/RobotoRegular.eot");
+    src: url("../fonts/RobotoRegular/RobotoRegular.eot?#iefix")format("embedded-opentype"),
+    url("../fonts/RobotoRegular/RobotoRegular.woff") format("woff"),
+    url("../fonts/RobotoRegular/RobotoRegular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+/* font-family: "RobotoLight"; */
+@font-face {
+    font-family: "RobotoLight";
+    src: url("../fonts/RobotoLight/RobotoLight.eot");
+    src: url("../fonts/RobotoLight/RobotoLight.eot?#iefix")format("embedded-opentype"),
+    url("../fonts/RobotoLight/RobotoLight.woff") format("woff"),
+    url("../fonts/RobotoLight/RobotoLight.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+/* font-family: "RobotoMedium"; */
+@font-face {
+    font-family: "RobotoMedium";
+    src: url("../fonts/RobotoMedium/RobotoMedium.eot");
+    src: url("../fonts/RobotoMedium/RobotoMedium.eot?#iefix")format("embedded-opentype"),
+    url("../fonts/RobotoMedium/RobotoMedium.woff") format("woff"),
+    url("../fonts/RobotoMedium/RobotoMedium.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+/* font-family: "RobotoBold"; */
+@font-face {
+    font-family: "RobotoBold";
+    src: url("../fonts/RobotoBold/RobotoBold.eot");
+    src: url("../fonts/RobotoBold/RobotoBold.eot?#iefix")format("embedded-opentype"),
+    url("../fonts/RobotoBold/RobotoBold.woff") format("woff"),
+    url("../fonts/RobotoBold/RobotoBold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}

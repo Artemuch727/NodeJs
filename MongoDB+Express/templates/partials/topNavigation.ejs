@@ -1,0 +1,15 @@
+<nav class="navbar" role="navigation">
+	<ul class="navbar-nav">
+		<li class="navbar-nav_link" ><a href="/">Главная</a></li>
+		<% if (user) { %>
+		<li class="navbar-nav_link"><a href="/room">Личный кабинет</a></li>
+		<% } %>
+	</ul>
+	<ul class="navbar-right">
+		<% if (user) { %>
+		<li class="navbar-nav_link"><a href="" onClick="$('<form method=POST action=/logout>').submit();return false">Выйти</a></li>
+		<% } else { %>
+		<li class="navbar-nav_link"><a href="/login">Войти</a></li>
+		<% } %>
+	</ul>
+</nav>
