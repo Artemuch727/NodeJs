@@ -4,39 +4,38 @@
 <p style="text-align:center;font-size: 16px;"> Добро пожаловать, <%=user.get('username')%> </p>
 <% } %>
 
-<div class='loginBox'>
-        		<form name="party-form" class="login-form">
-        		<input type="hidden" name="party_author" value=<%=user.get('username')%> />
-				  <div class="container">
-				    <label><b>Название мероприятия</b></label>
-				    <input class="login-form__input" type="text" placeholder="Название мероприятия" name="party_title" id="input-title"/> 
-				    <label><b>Описание</b></label>
-				    <input class="login-form__input" type="text" placeholder="Описание" name="party_description" id="input-descr"/>  
-				    		     
-				  </div>
-				  <div class="footer">
-				  	<button type="submit" class="footer__btn_submit">Добавить</button>		
-				    <button type="button" class="footer__btn_cancel" data-loading-text="Sending..."
-				    	onClick="$('<form method=POST action=/chatout>').submit();return false">	Отмена </button>   
-				  </div>
-				</form>
+<div class="container" style="text-align: center;">
+	<form name="party-form" class="form-inline">
+	<input type="hidden" name="party_author" value=<%=user.get('username')%> />
+	  <div class="form-group">
+	    <label for="exampleInputName2">Название мероприятия</label>
+	    <input type="text" class="form-control" name="party_title" id="input-title placeholder="Название мероприятия">
+	  </div>
+	  <div class="form-group">
+	    <label for="exampleInputEmail2">Описание</label>
+	    <input type="text" class="form-control" name="party_description" id="input-descr" placeholder="Описание">
+	  </div>
+	  <button type="submit" class="btn btn-default">Добавить</button>
+	  <button type="button" class="btn btn-default" onClick="$('<form method=POST action=/chatout>').submit();return false">Отмена</button>
+	</form>
 </div>
-
+<br>
 <% if (parties) { %>
-<div class="parties">
+<div class="container">
 <% parties.forEach( function(party) { %>
-<div class="partybox">  
-  <a class ="partybox__title"href="/party/<%=party.title%>" > <%= party.title %> </a>
-  <div class="partybox__body">
-      <%- party.description %>
-  </div>
-  <p class="partybox__user">Кто идет: <%- party.guests %></p>	 
-</div>
+	    <div class="thumbnail">
+	      <div class="caption">
+  			<h3><a href="/party/<%=party.title%>" > <%= party.title %> </a></h3>
+  			<h6>Создано: <%= party.created.toLocaleDateString() %></h6>
+	        <p><%- party.description %></p>
+	        <p><h6>Кто идет: <%- party.guests %></h6></p>
+	      </div>
+	    </div>
 <% }) %>
  <% } else { %>
  	<h4>Нет мероприятий...</h4>
- <% } %>	
-<div>	
+ <% } %>
+</div>
 
 
 

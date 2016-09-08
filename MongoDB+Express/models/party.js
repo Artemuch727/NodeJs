@@ -39,28 +39,32 @@ schema.statics.remove = function(title,username,  callback) {
 			var Party = this;
 			console.log(title)		 ;
 			//Party.findOneAndRemove({ title: title });
-			Party.findOneAndRemove({ title: title, author: username }, function(err, party) {
+			// Party.findOneAndRemove({ title: title, author: username }, function(err, party) {
+			// 	if (err) return next(err)
+			// 	callback(null, party);
+			// })
+			Party.findByIdAndRemove(title, function(err, party) {
 				if (err) return next(err)
 				callback(null, party);
 			})
 }
 
 
-schema.statics.guestActions = function(title, username, actionType, callback) {
+schema.statics.guestActions = function(id, username, actionType, callback) {
 		var Party = this;
 		if (actionType == 'ADD'){
-			Party.find({"title": title,"guests": username}, function(err, user){
+			Party.find({"_id": id,"guests": username}, function(err, user){
 				if (user.length == 0 ){
-					Party.findOneAndUpdate({title: title}, 
+					Party.findByIdAndUpdate(id, 
     						{ $push : {"guests" : username}} , function(err){
     							callback(err);
     						});
 				} else {callback(err);}
 			})					
 		} else {
-			Party.find({"title": title,"guests": username}, function(err, user){
+			Party.find({"id": id,"guests": username}, function(err, user){
 				if (user.length > 0 ){
-					Party.findOneAndUpdate({title: title}, 
+					Party.findByIdAndUpdate(id, 
     						{ $pull : {"guests" : username}} , function(err){
     							callback(err);
     						});	

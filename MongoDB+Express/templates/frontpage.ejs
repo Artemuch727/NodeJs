@@ -1,17 +1,17 @@
 <% layout('./layout/page')%>
 <% block('title', 'Все мероприятия этой пятницы')%>
 <% if (parties) { %>
-<div class="parties">
+<div class="container">
 <% parties.forEach( function(party) { %>
-<div class="partybox">  
-  <a class ="partybox__title"href="/party/<%=party.title%>" > <%= party.title %> </a>
-  <div class="partybox__body">
-      <%- party.description %>
-  </div>
-  <p class="partybox__user">Кто идет: <%- party.guests %></p>	 
-</div>
+	    <div class="thumbnail">
+	      <div class="caption">
+  			<h3><a href="/party/<%=party.title%>" > <%= party.title %> </a></h3>
+	        <p><%- party.description %></p>
+	        <p><h6>Кто идет: <%- party.guests %></h6></p>
+	      </div>
+	    </div>
 <% }) %>
  <% } else { %>
  	<h4>Нет мероприятий...</h4>
- <% } %>	
-<div>	
+ <% } %>
+</div>

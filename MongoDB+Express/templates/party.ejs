@@ -2,35 +2,40 @@
 <% block('title', 'Выбранное мероприятие')%> 
 
  
-  <form name="party-accepting" class="party-accepting">
-  <div class="party__detail">
-	  <h1 class="party-title"><%= party.title %></h1>	  
-
-	  <h3 class="party-author">Инициатор: <%= party.author %></h3>	
-
-	  <div class="party-body"> Описание:
+  
+  <div class="container">
+   <div class="row">
+   	<div class="col-md-8">
+	  <h1 class=""><%= party.title %></h1>
+	  <h3 class="">Инициатор: <%= party.author %></h3>	
+	  	<div class=""> Описание:
 	    <%- party.description %>
-		<p class="partybox__user">Кто идет: <%- party.guests %></p>
+		<p><h6>Кто идет: <%- party.guests %></h6></p>
   		</div>
-  </div>
-  	<div class="party__footer">
-	  <p>Идете ли вы на это мероприятие?</p>
-	  <input type="hidden" name="party_title" value=<%= party.title %> />
-			<div class="party__footer_btns">
-			<input name="accepted" type="checkbox" value="accepted" 
-				<%= (party.guests.indexOf(user.get('username')) < 0?'':'checked') %> 
-			> Я иду! </input>			 
-			<button style="margin: auto;" type="submit" name="submit"> Подтвердить </button>
-			</div>
-			<% if (party.author == user.get('username')) { %>
-				<form name="party-deleting">
-					<input type="hidden" name="party_title_del" value=<%= party.title %> />
-					<button type="submit" style="margin: 10px; width:250px; height: 40px;" data-loading-text="Sending...">	Удалить мероприятие </button>  
-			    </form>
-			 <% } %>
 	</div>
-  </form>
-
+	<div class="col-md-4">
+  	<form name="party-accepting" class="form-horizontal">
+	  <div class="form-group" style="text-align: center;">
+	    <div class="col-sm-offset-0 col-sm-10">
+	        <br>
+	    	<p><h4>Идете ли вы на это мероприятие?</h4></p>
+			<input type="hidden" name="party_id" value=<%= party._id %> />
+			<input name="accepted" type="checkbox" value="accepted" 
+				<%= (party.guests.indexOf(user.get('username')) < 0?'':'checked') %> > Я иду! </input>	
+			<button type="submit" class="btn btn-success">Подтвердить</button>
+	    </div>
+	  </div>
+   	</form>
+	<% if (party.author == user.get('username')) { %>
+	<form name="party-deleting" class="form-horizontal" style="margin: auto 60px">
+		<input type="hidden" name="party_id_del" value=<%= party._id %> />
+		<button type="submit" class="btn btn-warning">	Удалить мероприятие  </button>  
+    </form>
+	<% } %>
+	</div>
+  	</div>
+  </div>
+  
 <script type="text/javascript">
 		$(document.forms['party-deleting']).on('submit', function() {
 			var form = $(this);
@@ -47,7 +52,6 @@
 	  				window.location.href = "/room";
 	  			},
 	  			403: function() {
-	  				console.log("Ошибка! Данная операция невозможна.");
 	  				window.location.href = "/room";
 	  			}
 	  		}
@@ -58,7 +62,8 @@
 	  
 	  $(document.forms['party-accepting']).on('submit', function() {
 	  	var form = $(this);
-	  	$('.error', form).html('');	  	 
+	  	$('.error', form).html('');	  
+	  	console.log(form.serialize());	 
 	  	$.ajax({
 	  		url: "/party",
 	  		method: "post",
@@ -67,12 +72,11 @@
 	  		},
 	  		statusCode: {
 	  			200: function() {
-	  				form.html("Мероприятие добавлено.");
-	  				window.location.href = "/";
+	  				form.html("Мероприятие обновлено.");
+	  				window.location.href = "/room";
 	  			},
 	  			403: function() {
-	  				var error = JSON.parse(jqXHR.responseText);
-	  				$('.error', form).html(error.message)
+	  				window.location.href = "/room";
 	  			}
 	  		}
 	  	});
