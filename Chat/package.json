@@ -16,6 +16,8 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
+    "mongodb": "^2.2.10",
+    "mongoose": "^4.6.1",
     "nconf": "^0.8.4"
   }
 }
